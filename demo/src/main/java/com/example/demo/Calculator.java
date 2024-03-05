@@ -7,34 +7,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Calculator {
 
-    @GetMapping("/sum")
-    private String Sum(@RequestParam(name = "a", defaultValue = "0")
-                       int a, @RequestParam(name = "b", defaultValue = "0") int b) {
-        int result = a + b;
+    @GetMapping("/add")
+    private String addition(@RequestParam(name = "a", defaultValue = "0")
+                            double a, @RequestParam(name = "b", defaultValue = "0") double b) {
+        var result = a + b;
         return "Sum: " + result;
     }
 
-    @GetMapping("/sub")
-    private String Sub(@RequestParam(name = "a", defaultValue = "0")
-                       int a, @RequestParam(name = "b", defaultValue = "0") int b) {
-        int result = a - b;
+    @GetMapping("/subtract")
+    private String subtraction(@RequestParam(name = "a", defaultValue = "0")
+                               double a, @RequestParam(name = "b", defaultValue = "0") double b) {
+        var result = a - b;
         return "Subtraction: " + (a - b);
     }
 
-    @GetMapping("/multi")
-    private String Multiplication(@RequestParam(name = "a", defaultValue = "0")
-                                  int a, @RequestParam(name = "b", defaultValue = "0") int b) {
-        int result = a * b;
-        return "Subtraction: " + (a * b);
+    @GetMapping("/multiply")
+    private String multiplication(@RequestParam(name = "a", defaultValue = "0")
+                                  double a, @RequestParam(name = "b", defaultValue = "0") double b) {
+        var result = a * b;
+        return "Multiplication: " + (a * b);
     }
 
-    @GetMapping("/div")
-    private String Division(@RequestParam(name = "a", defaultValue = "0")
-                            int a, @RequestParam(name = "b", defaultValue = "0") int b) {
-
+    @GetMapping("/divide")
+    private String division(@RequestParam(name = "a", defaultValue = "0")
+                            double a, @RequestParam(name = "b", defaultValue = "0") double b) {
         try {
-            int result = a / b;
-            return "Subtraction: " + (a / b);
+            var result = a / b;
+            return "Division: " + (a / b);
         } catch (ArithmeticException e) {
             return "Invalid Operation";
         } finally {
